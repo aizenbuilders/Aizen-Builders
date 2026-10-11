@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aizen Builders | Empowering People. Developing Leaders.</title>
+<meta name="description" content="Aizen Builders is a community dedicated to helping people achieve their goals and developing young people into confident, capable leaders for the future.">
+<meta name="theme-color" content="#0c0c0e">
+<meta property="og:title" content="Aizen Builders | Empowering People. Developing Leaders.">
+<meta property="og:description" content="A community dedicated to helping people achieve their goals and developing young people into confident, capable leaders.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230c0c0e'/%3E%3Cpath d='M32 8 8 56h12l12-26 12 26h12z' fill='%23d4af6a'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0c0c0e; --char:#17171b; --char2:#212127; --white:#f6f4ef; --gray:#a3a3ad;
+  --gold:#d4af6a; --gold2:#f0d9a0; --line:rgba(212,175,106,.22);
+  --head:'Montserrat','Segoe UI',Arial,sans-serif; --body:'Inter','Segoe UI',Arial,sans-serif;
+  --nav:76px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:var(--nav)}
+body{background:var(--black);color:var(--white);font-family:var(--body);line-height:1.7;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--head);line-height:1.1;letter-spacing:.01em}
+:focus-visible{outline:2px solid var(--gold2);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--gold);color:#000;padding:8px 14px;z-index:200;border-radius:6px}
+.skip:focus{left:8px}
+.wrap{width:min(1180px,100% - 40px);margin-inline:auto}
+section{padding:clamp(72px,10vw,130px) 0;position:relative}
+.kicker{color:var(--gold);font-family:var(--head);font-weight:600;font-size:.8rem;letter-spacing:.22em;text-transform:uppercase;margin-bottom:18px}
+.h2{font-size:clamp(1.9rem,4.6vw,3.2rem);font-weight:800;text-transform:uppercase;max-width:20ch}
+.lead{color:var(--gray);font-size:clamp(1rem,1.5vw,1.15rem);max-width:62ch;margin-top:22px}
+.gold-text{background:linear-gradient(120deg,var(--gold2),var(--gold) 55%,#b08a45);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--head);font-weight:700;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;padding:16px 30px;border-radius:4px;border:1px solid transparent;cursor:pointer;transition:transform .25s,box-shadow .25s,background .25s,color .25s}
+.btn-gold{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#111;box-shadow:0 10px 30px rgba(212,175,106,.25)}
+.btn-gold:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(212,175,106,.38)}
+.btn-ghost{border-color:rgba(246,244,239,.35);color:var(--white);background:rgba(255,255,255,.03)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold2);transform:translateY(-3px)}
+
+/* Nav */
+header{position:fixed;inset:0 0 auto 0;height:var(--nav);z-index:100;display:flex;align-items:center;transition:background .3s,box-shadow .3s,backdrop-filter .3s}
+header.scrolled{background:rgba(12,12,14,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--head);font-weight:800;letter-spacing:.16em;font-size:.95rem}
+.brand svg{width:34px;height:34px}
+.brand small{display:block;color:var(--gold);font-weight:500;letter-spacing:.34em;font-size:.58rem;margin-top:2px}
+.menu{display:flex;align-items:center;gap:30px;list-style:none}
+.menu a:not(.btn){font-size:.88rem;font-weight:500;color:#d8d6d0;position:relative;padding:6px 0;transition:color .2s}
+.menu a:not(.btn)::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.menu a:not(.btn):hover,.menu a.active{color:var(--gold2)}
+.menu a:not(.btn):hover::after,.menu a.active::after{transform:scaleX(1)}
+.menu .btn{padding:11px 22px;font-size:.74rem}
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:6px;width:44px;height:44px;cursor:pointer;color:var(--white)}
+.burger span{display:block;width:20px;height:2px;background:currentColor;margin:5px auto;transition:transform .3s,opacity .3s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* Hero */
+.hero{min-height:100svh;display:flex;align-items:center;padding:calc(var(--nav) + 40px) 0 130px;
+  background:radial-gradient(900px 600px at 82% 30%,rgba(212,175,106,.16),transparent 60%),radial-gradient(700px 500px at 5% 95%,rgba(212,175,106,.07),transparent 60%),linear-gradient(160deg,#101013,#0a0a0b 60%,#15151a)}
+.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(115deg,transparent 0 90px,rgba(255,255,255,.018) 90px 91px);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(56px,8vw,110px);align-items:center;position:relative}
+.hero h1{font-size:clamp(2.5rem,7.2vw,5.6rem);font-weight:800;text-transform:uppercase;letter-spacing:-.005em}
+.hero h1 span{display:block}
+.hero p.lead{font-size:clamp(1.02rem,1.7vw,1.22rem);color:#c6c4be}
+.cta-row{display:flex;flex-wrap:wrap;gap:16px;margin-top:38px}
+.hero-logo{position:relative;justify-self:center;width:min(100%,380px);aspect-ratio:1/1}
+.hero-logo::before{content:"";position:absolute;inset:-12px;border:1px solid var(--line);border-radius:0}
+.hero-logo img{border-radius:0;width:100%;height:100%;aspect-ratio:1/1;object-fit:cover;box-shadow:0 40px 90px rgba(0,0,0,.65),0 0 0 1px rgba(212,175,106,.18);background:var(--char)}
+.hero-foot{position:absolute;left:0;right:0;bottom:0;border-top:1px solid var(--line);padding:22px 0;text-align:center;font-family:var(--head);font-weight:600;font-size:clamp(.65rem,1.6vw,.85rem);letter-spacing:.24em;color:var(--gold);background:rgba(12,12,14,.55);backdrop-filter:blur(6px)}
+
+/* About */
+#about{background:var(--black)}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+.card{background:linear-gradient(180deg,var(--char2),var(--char));border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:36px 30px;transition:transform .35s,border-color .35s,box-shadow .35s}
+.card:hover{transform:translateY(-8px);border-color:var(--line);box-shadow:0 24px 50px rgba(0,0,0,.5)}
+.ico{width:52px;height:52px;margin-bottom:24px;color:var(--gold)}
+.card h3{font-size:1.2rem;font-weight:700;margin-bottom:12px;text-transform:uppercase}
+.card p{color:var(--gray);font-size:.97rem}
+
+/* Mission & Vision */
+#mission{background:linear-gradient(180deg,var(--char),#0e0e11)}
+.mv{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:56px}
+.panel{position:relative;overflow:hidden;border-radius:18px;padding:clamp(32px,4vw,56px);border:1px solid var(--line);background:rgba(255,255,255,.03);backdrop-filter:blur(6px)}
+.panel.mis{background:linear-gradient(150deg,rgba(212,175,106,.14),rgba(255,255,255,.02) 55%)}
+.panel h3{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:800;margin:20px 0 18px;letter-spacing:.14em}
+.panel.vis h3{color:var(--gold2)}
+.panel p{font-size:clamp(1.02rem,1.5vw,1.2rem);color:#dcdad4;position:relative}
+.panel .bg{position:absolute;right:-50px;bottom:-60px;width:260px;height:260px;color:var(--gold);opacity:.07}
+
+/* Leader */
+#leadership{background:var(--black)}
+.leader{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(36px,6vw,84px);align-items:center}
+.portrait{position:relative;max-width:440px;margin-inline:auto;width:100%}
+.portrait::before{content:"";position:absolute;inset:22px -22px -22px 22px;border:1px solid var(--gold);border-radius:6px;opacity:.55}
+.frame{position:relative;border-radius:6px;overflow:hidden;aspect-ratio:4/5;background:linear-gradient(145deg,var(--char2),#0f0f12);box-shadow:0 40px 80px rgba(0,0,0,.6)}
+.frame img{width:100%;height:100%;object-fit:cover;object-position:50% 32%}
+.frame.empty::after{content:"Your photo here";position:absolute;inset:0;display:grid;place-items:center;color:var(--gray);font-family:var(--head);letter-spacing:.2em;font-size:.8rem;text-transform:uppercase}
+.name{font-size:clamp(1.7rem,3.4vw,2.6rem);font-weight:800;margin-top:26px}
+.role{display:inline-block;margin-top:12px;color:var(--gold);border:1px solid var(--line);padding:6px 16px;border-radius:99px;font-family:var(--head);font-size:.78rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.bio{color:#cfcdc7;margin-top:26px;max-width:60ch}
+blockquote{margin:34px 0;padding:6px 0 6px 26px;border-left:3px solid var(--gold);font-family:var(--head);font-weight:700;font-size:clamp(1.15rem,2.2vw,1.6rem);line-height:1.35;text-transform:uppercase}
+.msg{color:var(--gray);max-width:60ch}
+
+/* Why */
+#why{background:linear-gradient(180deg,#0e0e11,var(--char))}
+.values{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:56px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.val{padding:40px 28px;border-right:1px solid var(--line);transition:background .35s}
+.val:last-child{border-right:0}
+.val:hover{background:rgba(212,175,106,.06)}
+.val .ico{width:44px;height:44px;margin-bottom:20px}
+.val h3{font-size:1.15rem;font-weight:700;margin-bottom:10px;text-transform:uppercase;letter-spacing:.1em}
+.val p{color:var(--gray);font-size:.95rem}
+
+/* CTA */
+#inquire{text-align:center;background:radial-gradient(700px 420px at 50% 0%,rgba(212,175,106,.18),transparent 70%),var(--black);border-top:1px solid var(--line)}
+#inquire .h2{margin-inline:auto;max-width:18ch}
+#inquire .lead{margin-inline:auto}
+.steps{max-width:62ch;margin:30px auto 0;color:var(--gray);font-size:.95rem}
+#inquire .btn{margin-top:36px;padding:20px 44px;font-size:.95rem}
+.small{margin-top:18px;color:var(--gray);font-size:.9rem}
+
+/* Footer */
+footer{background:#08080a;border-top:1px solid var(--line);padding:64px 0 28px}
+.foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+.foot p{color:var(--gray);max-width:38ch;margin-top:16px;font-size:.95rem}
+.foot h4{font-family:var(--head);font-size:.78rem;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:16px}
+.foot ul{list-style:none;display:grid;gap:10px}
+.foot li a{color:#cfcdc7;font-size:.93rem;transition:color .2s}
+.foot li a:hover{color:var(--gold2)}
+.copy{margin-top:48px;padding-top:22px;border-top:1px solid rgba(255,255,255,.08);color:var(--gray);font-size:.85rem;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.totop{position:fixed;right:22px;bottom:22px;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:rgba(23,23,27,.92);color:var(--gold);cursor:pointer;display:grid;place-items:center;opacity:0;visibility:hidden;transform:translateY(12px);transition:.3s;z-index:90}
+.totop.show{opacity:1;visibility:visible;transform:none}
+.totop:hover{background:var(--gold);color:#111}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,30px);background:var(--char2);border:1px solid var(--gold);color:var(--white);padding:14px 22px;border-radius:8px;max-width:calc(100% - 32px);font-size:.92rem;opacity:0;pointer-events:none;transition:.35s;z-index:300}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* Motion: hero entrance + scroll reveal */
+.rise{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.d1{animation-delay:.15s}.d2{animation-delay:.3s}.d3{animation-delay:.45s}.d4{animation-delay:.6s}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
+.js .reveal.in{opacity:1;transform:none}
+
+/* Responsive */
+@media(max-width:980px){
+  .burger{display:block}
+  .menu{position:fixed;top:var(--nav);left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:rgba(12,12,14,.97);backdrop-filter:blur(14px);padding:12px 20px 28px;border-bottom:1px solid var(--line);transform:translateY(-120%);visibility:hidden;transition:transform .35s,visibility .35s}
+  .menu.open{transform:none;visibility:visible}
+  .menu li{border-bottom:1px solid rgba(255,255,255,.06)}
+  .menu a:not(.btn){display:block;padding:16px 4px;font-size:1rem}
+  .menu li:last-child{border:0;padding-top:18px}
+  header.menu-open{background:rgba(12,12,14,.97)}
+  .hero-grid,.leader,.mv{grid-template-columns:1fr}
+  .hero-logo{width:min(70%,320px);order:-1;margin-bottom:6px}
+  .hero{padding-bottom:150px}
+  .cards{grid-template-columns:1fr}
+  .values{grid-template-columns:1fr 1fr}
+  .val:nth-child(2){border-right:0}
+  .val:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .foot{grid-template-columns:1fr 1fr}.foot>div:first-child{grid-column:1/-1}
+}
+@media(max-width:560px){
+  .values{grid-template-columns:1fr}
+  .val{border-right:0;border-bottom:1px solid var(--line)}.val:last-child{border-bottom:0}
+  .cta-row .btn{width:100%}
+  .foot{grid-template-columns:1fr}
+  .hero-foot{letter-spacing:.12em}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- SECTION 1: NAVIGATION -->
+<header id="top">
+  <div class="wrap nav">
+    <a href="#home" class="brand" aria-label="Aizen Builders home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f0d9a0"/><stop offset="1" stop-color="#b08a45"/></linearGradient></defs><path d="M32 4 6 58h13l13-28 13 28h13z" fill="#c9c9d1"/><path d="M32 30 22 52h20z" fill="url(#g)"/></svg>
+      <span>AIZEN<small>BUILDERS</small></span>
+    </a>
+    <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
+    <ul class="menu" id="menu">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#mission">Mission &amp; Vision</a></li>
+      <li><a href="#leadership">Leadership</a></li>
+      <li><a href="#inquire">Contact</a></li>
+      <li><a href="#" class="btn btn-gold" data-inquire>Inquire Now</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="main">
+<!-- SECTION 2: HERO -->
+<section class="hero" id="home" aria-labelledby="hero-title">
+  <div class="wrap hero-grid">
+    <div>
+      <h1 id="hero-title"><span class="rise d1">Build your potential.</span><span class="rise d2 gold-text">Lead the future.</span></h1>
+      <p class="lead rise d3">A community built on ambition, personal growth, and leadership. We help individuals pursue their goals, discover their potential, and become the leaders who will shape tomorrow.</p>
+      <div class="cta-row rise d4">
+        <a href="#" class="btn btn-gold" data-inquire>Inquire Now</a>
+        <a href="#about" class="btn btn-ghost">Discover Aizen Builders</a>
+      </div>
+    </div>
+    <div class="hero-logo rise d2"><img id="logoImg" alt="Aizen Builders logo: a metallic A emblem with a gold triangle" width="600" height="600"></div>
+  </div>
+  <div class="hero-foot">GROW WITH PURPOSE. LEAD WITH CONFIDENCE. BUILD YOUR FUTURE.</div>
+</section>
+
+<!-- SECTION 3: ABOUT -->
+<section id="about" aria-labelledby="about-title">
+  <div class="wrap">
+    <p class="kicker reveal">About Aizen Builders</p>
+    <h2 class="h2 reveal" id="about-title">More than a community. A foundation for growth.</h2>
+    <p class="lead reveal">Aizen Builders is a community dedicated to helping people achieve their goals and developing young people into confident, capable leaders for the future. We believe growth is a daily practice, and that people grow further when they are supported by others who share their drive.</p>
+    <div class="cards">
+      <article class="card reveal">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 42V20"/><path d="M24 26c-7 0-12-5-12-12 7 0 12 5 12 12Z"/><path d="M24 20c0-6 4-11 11-11 0 6-4 11-11 11Z"/></svg>
+        <h3>Personal Growth</h3>
+        <p>Encouraging individuals to discover their potential, strengthen their mindset, and continue improving themselves.</p>
+      </article>
+      <article class="card reveal">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="17"/><circle cx="24" cy="24" r="9"/><circle cx="24" cy="24" r="2"/></svg>
+        <h3>Goal Achievement</h3>
+        <p>Supporting individuals as they work toward their ambitions with purpose, determination, and a commitment to progress.</p>
+      </article>
+      <article class="card reveal">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6 8 40h8l8-18 8 18h8z"/></svg>
+        <h3>Leadership Development</h3>
+        <p>Helping young people build confidence, responsibility, communication, and leadership skills that can make a positive difference.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4: MISSION & VISION -->
+<section id="mission" aria-labelledby="mv-title">
+  <div class="wrap">
+    <p class="kicker reveal">Our Direction</p>
+    <h2 class="h2 reveal" id="mv-title">What we do and where we are headed.</h2>
+    <div class="mv">
+      <article class="panel mis reveal">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 40V8"/><path d="M8 10h26l-6 8 6 8H8"/></svg>
+        <h3 class="gold-text">MISSION</h3>
+        <p>To support and empower individuals as they pursue their goals, while providing opportunities for young people to learn, grow, and build leadership skills.</p>
+        <svg class="bg" viewBox="0 0 48 48" fill="currentColor" aria-hidden="true"><path d="M24 4 4 44h40z"/></svg>
+      </article>
+      <article class="panel vis reveal">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 24s8-14 21-14 21 14 21 14-8 14-21 14S3 24 3 24Z"/><circle cx="24" cy="24" r="6"/></svg>
+        <h3>VISION</h3>
+        <p>To create a future where every person has the support to reach their potential and young leaders are prepared to make a positive difference in their communities and the world.</p>
+        <svg class="bg" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><circle cx="24" cy="24" r="20"/><circle cx="24" cy="24" r="11"/></svg>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5: LEADER PROFILE -->
+<section id="leadership" aria-labelledby="leader-title">
+  <div class="wrap">
+    <p class="kicker reveal">Leadership</p>
+    <h2 class="h2 reveal" id="leader-title" style="max-width:24ch">Meet the leader behind the vision.</h2>
+    <div class="leader" style="margin-top:56px">
+      <figure class="portrait reveal">
+        <div class="frame empty" id="frame"><img id="portraitImg" alt="Portrait of Ludy Jay B. Mendoza Jr." width="800" height="1000"></div>
+        <figcaption>
+          <h3 class="name">Ludy Jay B. Mendoza Jr.</h3>
+          <span class="role">Top Associate</span>
+        </figcaption>
+      </figure>
+      <div class="reveal">
+        <p class="bio">A driven young leader devoted to helping others grow, pursue their goals, and discover what they are capable of achieving. I believe that limitations should never define a person's future. Through determination, continuous growth, and a commitment to serving others, I strive to prove that we can accomplish what others may believe is impossible.</p>
+        <blockquote>They may doubt what you can achieve. Let your actions prove what is possible.</blockquote>
+        <p class="msg">My goal is not only to pursue success for myself, but also to help others recognize their potential, develop their abilities, and become leaders in their own right.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6: WHY AIZEN BUILDERS -->
+<section id="why" aria-labelledby="why-title">
+  <div class="wrap">
+    <p class="kicker reveal">Why Aizen Builders?</p>
+    <h2 class="h2 reveal" id="why-title" style="max-width:24ch">Your potential deserves the opportunity to grow.</h2>
+    <div class="values">
+      <article class="val reveal">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="16"/><path d="m30 18-4 10-10 4 4-10z"/></svg>
+        <h3>Purpose</h3><p>Have a clear direction and meaningful goals to work toward.</p>
+      </article>
+      <article class="val reveal">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 38 18 26l8 8 16-18"/><path d="M32 16h10v10"/></svg>
+        <h3>Growth</h3><p>Keep learning, improving, and developing your abilities.</p>
+      </article>
+      <article class="val reveal">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M24 6 8 40h8l8-18 8 18h8z"/></svg>
+        <h3>Leadership</h3><p>Build the confidence and responsibility to inspire others.</p>
+      </article>
+      <article class="val reveal">
+        <svg class="ico" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="17" cy="18" r="6"/><circle cx="33" cy="18" r="6"/><path d="M5 40c0-7 5-11 12-11s12 4 12 11M29 30c7 0 14 3 14 10"/></svg>
+        <h3>Community</h3><p>Grow alongside people who encourage progress and positive change.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7: CALL TO ACTION -->
+<section id="inquire" aria-labelledby="cta-title">
+  <div class="wrap">
+    <p class="kicker reveal">Contact / Inquire</p>
+    <h2 class="h2 reveal" id="cta-title">Your next chapter starts with a decision.</h2>
+    <p class="lead reveal">Interested in learning more about Aizen Builders? Take the first step by sending us an inquiry. Discover what our community stands for and explore whether it aligns with your personal goals.</p>
+    <p class="steps reveal">Clicking the button opens our inquiry form in a new tab. Fill it in and send it, then we will review your inquiry. Submitting an inquiry is a first conversation and does not guarantee acceptance or participation.</p>
+    <a href="#" class="btn btn-gold reveal" data-inquire>Submit an Inquiry</a>
+    <p class="small reveal">Have questions? Start by reaching out.</p>
+  </div>
+</section>
+</main>
+
+<!-- SECTION 8: FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a href="#home" class="brand" aria-label="Aizen Builders home">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 4 6 58h13l13-28 13 28h13z" fill="#c9c9d1"/><path d="M32 30 22 52h20z" fill="#d4af6a"/></svg>
+          <span>AIZEN<small>BUILDERS</small></span>
+        </a>
+        <p>Aizen Builders — Empowering individuals. Developing leaders. Building a better future.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#mission">Mission &amp; Vision</a></li>
+          <li><a href="#leadership">Leadership</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Connect</h4>
+        <ul>
+          <li><a href="#" data-inquire>Inquire Now</a></li>
+          <li><a href="#inquire">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copy"><span>&copy; <span id="year">2026</span> Aizen Builders. All rights reserved.</span><span>Built to rise. Built to last.</span></div>
+  </div>
+</footer>
+
+<button class="totop" id="totop" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 15 7-7 7 7"/></svg></button>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ============ EDIT HERE ============ */
+// 1) Paste your Google Form link between the quotes. Every inquiry button uses this one value.
+const GOOGLE_FORM_URL = "https://forms.gle/v4eypWJtK44T1V5r7";
+// 2) Image files. Keep these files in the same folder as index.html, or replace with full URLs.
+const LOGO_URL = "aizenbuilders.jpg";
+const PORTRAIT_URL = "ludyjay.jpg"; // Replace this one value to change your portrait photo.
+/* =================================== */
+
+document.documentElement.classList.add("js");
+const $ = (s, c = document) => c.querySelector(s);
+const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+
+/* Images with fallbacks */
+const logo = $("#logoImg"), portrait = $("#portraitImg"), frame = $("#frame");
+logo.src = LOGO_URL;
+logo.onerror = () => { logo.removeAttribute("src"); logo.style.background = "linear-gradient(145deg,#212127,#0c0c0e)"; };
+portrait.src = PORTRAIT_URL;
+portrait.onload = () => frame.classList.remove("empty");
+portrait.onerror = () => { portrait.style.display = "none"; };
+
+/* Inquiry links */
+const toast = $("#toast"); let toastTimer;
+function showToast(msg){ toast.textContent = msg; toast.classList.add("show"); clearTimeout(toastTimer); toastTimer = setTimeout(() => toast.classList.remove("show"), 4500); }
+const formReady = /^https?:\/\//i.test(GOOGLE_FORM_URL);
+$$("[data-inquire]").forEach(a => {
+  if (formReady) { a.href = GOOGLE_FORM_URL; a.target = "_blank"; a.rel = "noopener noreferrer"; }
+  a.addEventListener("click", e => {
+    if (!formReady) { e.preventDefault(); showToast("The inquiry form link has not been added yet. Set GOOGLE_FORM_URL in the code."); }
+    closeMenu();
+  });
+});
+
+/* Mobile menu */
+const burger = $("#burger"), menu = $("#menu"), header = $("header");
+function closeMenu(){ menu.classList.remove("open"); header.classList.remove("menu-open"); burger.setAttribute("aria-expanded", "false"); }
+burger.addEventListener("click", () => {
+  const open = menu.classList.toggle("open");
+  header.classList.toggle("menu-open", open);
+  burger.setAttribute("aria-expanded", String(open));
+});
+$$("#menu a[href^='#']").forEach(a => a.addEventListener("click", closeMenu));
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeMenu(); });
+
+/* Scroll effects: navbar, back-to-top, active link */
+const totop = $("#totop");
+const onScroll = () => {
+  header.classList.toggle("scrolled", scrollY > 30);
+  totop.classList.toggle("show", scrollY > 600);
+};
+addEventListener("scroll", onScroll, { passive: true }); onScroll();
+totop.addEventListener("click", () => scrollTo({ top: 0 }));
+
+const links = $$("#menu a[href^='#']:not(.btn)");
+const sections = links.map(l => $(l.getAttribute("href"))).filter(Boolean);
+const spy = new IntersectionObserver(entries => {
+  entries.forEach(en => {
+    if (en.isIntersecting) links.forEach(l => l.classList.toggle("active", l.getAttribute("href") === "#" + en.target.id));
+  });
+}, { rootMargin: "-45% 0px -50% 0px" });
+sections.forEach(s => spy.observe(s));
+
+/* Reveal on scroll */
+const io = new IntersectionObserver((entries, o) => {
+  entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); o.unobserve(en.target); } });
+}, { threshold: .12 });
+$$(".reveal").forEach((el, i) => { el.style.transitionDelay = (i % 4) * 70 + "ms"; io.observe(el); });
+
+/* Footer year */
+$("#year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
