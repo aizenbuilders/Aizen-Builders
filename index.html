@@ -50,7 +50,7 @@ header.scrolled{background:rgba(12,12,14,.88);backdrop-filter:blur(14px);-webkit
 .brand{display:flex;align-items:center;gap:12px;font-family:var(--head);font-weight:800;letter-spacing:.16em;font-size:.95rem}
 .brand svg{width:34px;height:34px}
 .brand small{display:block;color:var(--gold);font-weight:500;letter-spacing:.34em;font-size:.58rem;margin-top:2px}
-.menu{display:flex;align-items:center;gap:30px;list-style:none}
+.menu{display:flex;align-items:center;gap:22px;list-style:none}
 .menu a:not(.btn){font-size:.88rem;font-weight:500;color:#d8d6d0;position:relative;padding:6px 0;transition:color .2s}
 .menu a:not(.btn)::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:100%;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .3s}
 .menu a:not(.btn):hover,.menu a.active{color:var(--gold2)}
@@ -149,6 +149,46 @@ footer{background:#08080a;border-top:1px solid var(--line);padding:64px 0 28px}
 .js .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s ease}
 .js .reveal.in{opacity:1;transform:none}
 
+/* Community Library */
+#library{background:linear-gradient(180deg,var(--char),#0e0e11)}
+.feat{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,5vw,64px);align-items:center;margin-top:56px;padding:clamp(20px,3vw,36px);border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.03)}
+.feat h3{font-size:clamp(1.4rem,2.8vw,2rem);font-weight:800;text-transform:uppercase}
+.feat p{color:var(--gray);margin-top:16px}
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin:56px 0 30px}
+.chip{font-family:var(--head);font-weight:600;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding:11px 20px;border-radius:99px;border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--white);cursor:pointer;transition:background .25s,color .25s,transform .25s}
+.chip:hover{transform:translateY(-2px);border-color:var(--gold)}
+.chip[aria-pressed="true"]{background:linear-gradient(135deg,var(--gold2),var(--gold));color:#111;border-color:transparent}
+.grid{columns:3;column-gap:18px}
+.tile{position:relative;display:block;width:100%;margin:0 0 18px;padding:0;border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;cursor:pointer;background:var(--char2);color:inherit;text-align:left;break-inside:avoid;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:transform .35s,border-color .35s,box-shadow .35s}
+.tile:hover{transform:translateY(-5px);border-color:var(--line);box-shadow:0 22px 46px rgba(0,0,0,.55)}
+.tile img{width:100%;height:auto;display:block;transition:transform .6s}
+.tile:hover img{transform:scale(1.05)}
+.ph{display:grid;place-items:center;aspect-ratio:var(--r,4/3);background:linear-gradient(145deg,hsl(var(--h,40) 25% 18%),#0f0f12);color:var(--gold)}
+.ph svg{width:44px;height:44px;opacity:.7}
+.cap{position:absolute;inset:auto 0 0 0;padding:44px 16px 14px;background:linear-gradient(transparent,rgba(8,8,10,.92));opacity:0;transform:translateY(8px);transition:opacity .35s,transform .35s}
+.tile:hover .cap,.tile:focus-visible .cap{opacity:1;transform:none}
+@media(hover:none){.cap{opacity:1;transform:none}}
+.cap b{display:block;font-family:var(--head);font-size:.88rem;line-height:1.35}
+.cap small{color:var(--gold2);font-size:.75rem}
+.play{position:absolute;top:50%;left:50%;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:rgba(12,12,14,.72);border:1px solid var(--gold);display:grid;place-items:center;color:var(--gold2)}
+.badge{position:absolute;top:12px;left:12px;font-size:.66rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:99px;background:rgba(12,12,14,.78);color:var(--gold2);border:1px solid var(--line)}
+.badge.s{left:auto;right:12px;color:var(--gray)}
+.empty{display:none;text-align:center;padding:60px 20px;border:1px dashed var(--line);border-radius:14px;color:var(--gray)}
+.more{text-align:center;margin-top:14px}
+.lb{position:fixed;inset:0;z-index:400;background:rgba(6,6,8,.95);display:none;flex-direction:column;align-items:center;justify-content:center;padding:70px 16px 24px}
+.lb.open{display:flex}
+.lb-stage{width:min(1100px,100%);display:grid;place-items:center}
+.lb-stage img,.lb-stage video{max-width:100%;max-height:calc(100svh - 200px);border-radius:10px;background:#000}
+.lb-stage iframe{width:min(100%,960px);aspect-ratio:16/9;border:0;border-radius:10px}
+.lb-ph{width:min(100%,520px);aspect-ratio:4/3;display:grid;place-items:center;text-align:center;padding:24px;border:1px dashed var(--gold);border-radius:12px;color:var(--gray)}
+.lb-cap{margin-top:16px;text-align:center;max-width:70ch;color:#dcdad4}
+.lb-cap small{color:var(--gold2);margin-left:8px}
+.lb-btn{position:absolute;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:rgba(23,23,27,.92);color:var(--gold2);cursor:pointer;display:grid;place-items:center;font-size:1.6rem;line-height:1;transition:background .25s,color .25s}
+.lb-btn:hover{background:var(--gold);color:#111}
+.lb-close{top:14px;right:14px}.lb-prev{left:14px;top:50%;transform:translateY(-50%)}.lb-next{right:14px;top:50%;transform:translateY(-50%)}
+@media(max-width:900px){.grid{columns:2}.feat{grid-template-columns:1fr}}
+@media(max-width:560px){.grid{columns:1}.lb{padding-bottom:90px}.lb-prev,.lb-next{top:auto;bottom:20px;transform:none}.lb-prev{left:calc(50% - 62px)}.lb-next{right:calc(50% - 62px)}}
+
 /* Responsive */
 @media(max-width:980px){
   .burger{display:block}
@@ -197,6 +237,7 @@ footer{background:#08080a;border-top:1px solid var(--line);padding:64px 0 28px}
       <li><a href="#about">About Us</a></li>
       <li><a href="#mission">Mission &amp; Vision</a></li>
       <li><a href="#leadership">Leadership</a></li>
+      <li><a href="#library">Community Library</a></li>
       <li><a href="#inquire">Contact</a></li>
       <li><a href="#" class="btn btn-gold" data-inquire>Inquire Now</a></li>
     </ul>
@@ -316,6 +357,26 @@ footer{background:#08080a;border-top:1px solid var(--line);padding:64px 0 28px}
   </div>
 </section>
 
+<!-- SECTION 6B: COMMUNITY LIBRARY -->
+<section id="library" aria-labelledby="lib-title">
+  <div class="wrap">
+    <p class="kicker reveal">Our Memories</p>
+    <h2 class="h2 reveal" id="lib-title">Life at Aizen Builders</h2>
+    <p class="lead reveal">Beyond the goals we pursue and the leaders we build, there are memories that make the journey meaningful. Explore the moments, laughter, friendships, activities, and achievements that bring our Aizen Builders community together.</p>
+    <div class="feat reveal">
+      <div id="featMedia"></div>
+      <div>
+        <h3 class="gold-text">Moments that make us stronger</h3>
+        <p>Every gathering, every laugh, and every shared experience becomes part of our story. These are the moments that make our community more than just a group of people.</p>
+      </div>
+    </div>
+    <div class="filters" id="filters" role="group" aria-label="Filter community media"></div>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" role="status">No photos or videos in this category yet. Check back soon.</p>
+    <div class="more"><button class="btn btn-ghost" id="more" type="button" hidden>Load more</button></div>
+  </div>
+</section>
+
 <!-- SECTION 7: CALL TO ACTION -->
 <section id="inquire" aria-labelledby="cta-title">
   <div class="wrap">
@@ -347,6 +408,7 @@ footer{background:#08080a;border-top:1px solid var(--line);padding:64px 0 28px}
           <li><a href="#about">About Us</a></li>
           <li><a href="#mission">Mission &amp; Vision</a></li>
           <li><a href="#leadership">Leadership</a></li>
+          <li><a href="#library">Community Library</a></li>
         </ul>
       </div>
       <div>
@@ -360,6 +422,14 @@ footer{background:#08080a;border-top:1px solid var(--line);padding:64px 0 28px}
     <div class="copy"><span>&copy; <span id="year">2026</span> Aizen Builders. All rights reserved.</span><span>Built to rise. Built to last.</span></div>
   </div>
 </footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Media viewer">
+  <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="Close viewer">&times;</button>
+  <button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="Previous">&#8249;</button>
+  <div class="lb-stage" id="lbStage"></div>
+  <p class="lb-cap" id="lbCap"></p>
+  <button class="lb-btn lb-next" id="lbNext" type="button" aria-label="Next">&#8250;</button>
+</div>
 
 <button class="totop" id="totop" aria-label="Back to top"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 15 7-7 7 7"/></svg></button>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -431,6 +501,128 @@ const io = new IntersectionObserver((entries, o) => {
   entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); o.unobserve(en.target); } });
 }, { threshold: .12 });
 $$(".reveal").forEach((el, i) => { el.style.transitionDelay = (i % 4) * 70 + "ms"; io.observe(el); });
+
+/* ============ COMMUNITY LIBRARY: EDIT HERE ============
+   TO ADD A PHOTO: copy one line in communityMedia, set category to one of LIBRARY_CATEGORIES,
+   and set src to your image URL (or a file name in this folder), plus caption, alt and date.
+   TO ADD A VIDEO: use type:"video". src can be a YouTube link (watch, youtu.be or shorts) or a direct
+   .mp4 URL. thumbnail is optional (YouTube thumbnails load automatically).
+   Items with an empty src show as "Sample" placeholders. Optional: ratio:"4/5" sizes a placeholder.
+   Example photo: {type:"photo",category:"Community Fun",src:"photos/team.jpg",caption:"Team outing",alt:"Members at the team outing",date:"March 2026"},
+   Example video: {type:"video",category:"Events & Gatherings",src:"https://youtu.be/XXXXXXXXXXX",caption:"Event highlights",date:"May 2026"},
+   Note: this array only lists files hosted elsewhere. It is not an upload system. Uploads by an admin
+   would need a backend or cloud storage (for example Firebase, Cloudinary, or a CMS). */
+const LIBRARY_PAGE_SIZE = 6;
+const LIBRARY_CATEGORIES = ["Community Fun", "Events & Gatherings", "Growth & Achievements", "Behind the Scenes"];
+const FEATURED_MEDIA = { type: "photo", src: "", caption: "Featured memory (sample placeholder, replace with a real photo or video)", alt: "", date: "", ratio: "16/10" };
+const communityMedia = [
+  { type: "photo", category: "Community Fun", src: "", caption: "Sample photo: add a real community photo", alt: "", date: "", ratio: "4/5" },
+  { type: "video", category: "Community Fun", src: "", caption: "Sample video: add a YouTube or .mp4 link", alt: "", date: "", ratio: "16/10" },
+  { type: "photo", category: "Events & Gatherings", src: "", caption: "Sample photo: community gathering", alt: "", date: "", ratio: "4/3" },
+  { type: "photo", category: "Growth & Achievements", src: "", caption: "Sample photo: milestone celebration", alt: "", date: "", ratio: "1/1" },
+  { type: "video", category: "Events & Gatherings", src: "", caption: "Sample video: event highlights", alt: "", date: "", ratio: "16/10" },
+  { type: "photo", category: "Behind the Scenes", src: "", caption: "Sample photo: behind the scenes", alt: "", date: "", ratio: "3/4" },
+  { type: "photo", category: "Events & Gatherings", src: "", caption: "Sample photo: group activity", alt: "", date: "", ratio: "4/3" },
+  { type: "photo", category: "Growth & Achievements", src: "", caption: "Sample photo: recognition moment", alt: "", date: "", ratio: "4/5" }
+];
+
+(function () {
+  const grid = $("#grid"), filtersEl = $("#filters"), emptyEl = $("#empty"), moreBtn = $("#more"), featEl = $("#featMedia");
+  const lb = $("#lb"), stage = $("#lbStage"), lbCap = $("#lbCap"), closeB = $("#lbClose"), prevB = $("#lbPrev"), nextB = $("#lbNext");
+  const ALL = "All Moments";
+  let active = ALL, shown = LIBRARY_PAGE_SIZE, list = [], items = [], idx = 0, lastFocus = null, sx = null;
+  const PLAY = '<svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>';
+  const IMG = '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="9" width="36" height="30" rx="4"/><circle cx="17" cy="20" r="3"/><path d="m8 36 11-10 8 7 6-5 9 8"/></svg>';
+  const esc = s => String(s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const ytId = u => { const m = String(u || "").match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/))([\w-]{11})/); return m ? m[1] : null; };
+  const platform = m => m.type === "video" ? (m.videoPlatform || (ytId(m.src) ? "youtube" : "file")) : null;
+  function thumb(m) {
+    if (m.thumbnail) return m.thumbnail;
+    if (m.type === "photo") return m.src;
+    const id = platform(m) === "youtube" && ytId(m.src);
+    return id ? "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg" : "";
+  }
+  function tile(m, hue, li) {
+    const t = thumb(m), vid = m.type === "video";
+    const label = (vid ? "Play video: " : "View photo: ") + (m.caption || m.alt || "community moment");
+    const media = t ? `<img src="${esc(t)}" alt="${esc(m.alt || m.caption)}" loading="lazy" decoding="async">`
+      : `<div class="ph" style="--h:${(hue * 47 + 30) % 360};--r:${m.ratio || "4/3"}">${IMG}</div>`;
+    return `<button class="tile" type="button" data-i="${li}" aria-label="${esc(label)}">${media}`
+      + (vid ? `<span class="play">${PLAY}</span><span class="badge">Video</span>` : "")
+      + (m.src ? "" : '<span class="badge s">Sample</span>')
+      + `<span class="cap"><b>${esc(m.caption)}</b>${m.date ? `<small>${esc(m.date)}</small>` : ""}</span></button>`;
+  }
+  function render() {
+    list = communityMedia.filter(m => active === ALL || m.category === active);
+    grid.innerHTML = list.slice(0, shown).map((m, i) => tile(m, communityMedia.indexOf(m), i)).join("");
+    emptyEl.style.display = list.length ? "none" : "block";
+    moreBtn.hidden = list.length <= shown;
+  }
+  filtersEl.innerHTML = [ALL, ...LIBRARY_CATEGORIES].map(c => `<button type="button" class="chip" aria-pressed="${c === ALL}">${esc(c)}</button>`).join("");
+  filtersEl.addEventListener("click", e => {
+    const b = e.target.closest(".chip"); if (!b) return;
+    active = b.textContent; shown = LIBRARY_PAGE_SIZE;
+    $$(".chip", filtersEl).forEach(c => c.setAttribute("aria-pressed", String(c === b)));
+    render();
+  });
+  moreBtn.addEventListener("click", () => { shown += LIBRARY_PAGE_SIZE; render(); });
+  featEl.innerHTML = tile(FEATURED_MEDIA, 3, 0);
+  featEl.addEventListener("click", e => { if (e.target.closest(".tile")) open([FEATURED_MEDIA], 0); });
+  grid.addEventListener("click", e => { const b = e.target.closest(".tile"); if (b) open(list, +b.dataset.i); });
+  render();
+
+  /* Viewer */
+  function stop() {
+    const v = $("video", stage);
+    if (v) { v.pause(); v.removeAttribute("src"); v.load(); }
+    stage.innerHTML = "";
+  }
+  function show() {
+    const m = items[idx]; stop();
+    let h;
+    if (!m.src) h = `<div class="lb-ph"><p>Sample placeholder.<br>Add a real ${m.type} link in communityMedia to show it here.</p></div>`;
+    else if (m.type === "photo") h = `<img src="${esc(m.src)}" alt="${esc(m.alt || m.caption)}">`;
+    else if (platform(m) === "youtube") {
+      const id = ytId(m.src);
+      h = id ? `<iframe src="https://www.youtube-nocookie.com/embed/${id}?rel=0" title="${esc(m.caption || "Community video")}" allow="encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>`
+        : '<div class="lb-ph"><p>This YouTube link could not be read.</p></div>';
+    } else h = `<video controls playsinline preload="metadata" ${m.thumbnail ? `poster="${esc(m.thumbnail)}"` : ""} src="${esc(m.src)}"></video>`;
+    stage.innerHTML = h;
+    lbCap.innerHTML = (m.caption ? esc(m.caption) : "") + (m.date ? `<small>${esc(m.date)}</small>` : "");
+    prevB.hidden = nextB.hidden = items.length < 2;
+  }
+  function open(arr, i) {
+    items = arr; idx = i; lastFocus = document.activeElement;
+    lb.classList.add("open"); document.body.style.overflow = "hidden";
+    show(); closeB.focus();
+  }
+  function close() {
+    stop(); lb.classList.remove("open"); document.body.style.overflow = "";
+    if (lastFocus) lastFocus.focus();
+  }
+  const step = d => { idx = (idx + d + items.length) % items.length; show(); };
+  closeB.addEventListener("click", close);
+  prevB.addEventListener("click", () => step(-1));
+  nextB.addEventListener("click", () => step(1));
+  lb.addEventListener("click", e => { if (e.target === lb || e.target === stage) close(); });
+  document.addEventListener("keydown", e => {
+    if (!lb.classList.contains("open")) return;
+    if (e.key === "Escape") close();
+    else if (e.key === "ArrowLeft" && items.length > 1 && e.target.tagName !== "VIDEO") step(-1);
+    else if (e.key === "ArrowRight" && items.length > 1 && e.target.tagName !== "VIDEO") step(1);
+    else if (e.key === "Tab") {
+      const f = $$("button:not([hidden]),video[controls]", lb), a = document.activeElement;
+      if (e.shiftKey && a === f[0]) { e.preventDefault(); f[f.length - 1].focus(); }
+      else if (!e.shiftKey && a === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
+    }
+  });
+  lb.addEventListener("touchstart", e => { sx = e.target.tagName === "VIDEO" ? null : e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener("touchend", e => {
+    if (sx === null || items.length < 2) return;
+    const dx = e.changedTouches[0].clientX - sx; sx = null;
+    if (Math.abs(dx) > 60) step(dx < 0 ? 1 : -1);
+  }, { passive: true });
+})();
 
 /* Footer year */
 $("#year").textContent = new Date().getFullYear();
