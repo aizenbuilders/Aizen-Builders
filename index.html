@@ -515,7 +515,7 @@ $$(".reveal").forEach((el, i) => { el.style.transitionDelay = (i % 4) * 70 + "ms
    Note: this only lists files hosted with the site or elsewhere. It is not an upload system.
    Uploads by an admin would need a backend or cloud storage (for example Firebase, Cloudinary, or a CMS). */
 const LIBRARY_PAGE_SIZE = 6;
-const LIBRARY_CATEGORIES = ["Community Fun", "Events & Gatherings", "Growth & Achievements", "Behind the Scenes"];
+const LIBRARY_CATEGORIES = ["Community", "Events & Gatherings", "Growth & Achievements", "Behind the Scenes"];
 const FEATURED_MEDIA = { type: "photo", src: "", caption: "Featured memory (sample placeholder, replace with a real photo or video)", alt: "", date: "" };
 const MEDIA_FOLDERS = [
   { type: "photo", folder: "Aizen Photos/Events",             category: "Events & Gatherings",   files: [] },
@@ -542,7 +542,7 @@ if (!communityMedia.length) {
   communityMedia.push(
     { type: "photo", category: "Events & Gatherings", src: "", caption: "Sample photo: add your event photos", alt: "", date: "" },
     { type: "photo", category: "Growth & Achievements", src: "", caption: "Sample photo: add your award photos", alt: "", date: "" },
-    { type: "video", category: "Community Fun", src: "", caption: "Sample video: add your fun community videos", alt: "", date: "" }
+    { type: "video", category: "Community", src: "", caption: "Sample video: add your fun community videos", alt: "", date: "" }
   );
 }
 
