@@ -517,7 +517,7 @@ const LIBRARY_CATEGORIES = ["Community Fun", "Events & Gatherings", "Growth & Ac
 const FEATURED_MEDIA = { type: "photo", src: "", caption: "Featured memory (sample placeholder, replace with a real photo or video)", alt: "", date: "" };
 const MEDIA_FOLDERS = [
   { type: "photo", folder: "Aizen Photos/Events",             category: "Events & Gatherings",   files: [] },
-  { type: "photo", folder: "Aizen Photos/Gathering Meetings", category: "Events & Gatherings",   files: ["meeting1", "meeting2"] },
+  { type: "photo", folder: "Aizen Photos/Gathering and Meetings", category: "Events & Gatherings",   files: ["meeting1", "meeting2"] },
   { type: "photo", folder: "Aizen Photos/Awards",             category: "Growth & Achievements", files: [] },
   { type: "video", folder: "",                                category: "Community Fun",         files: ["fem.mp4", "cyrus.mp4"] }
 ];
@@ -529,7 +529,7 @@ const communityMedia = MEDIA_FOLDERS.flatMap(g => g.files.map(f => {
   const name = niceName(decodeURIComponent(o.file.split("/").pop()));
   return {
     type: g.type, category: g.category,
-    src: isLink ? o.file : encodeURI(g.folder + "/" + o.file),
+   src: isLink ? o.file : encodeURI((g.folder ? g.folder + "/" : "") + o.file),
     caption: o.caption || (isLink ? "" : name), alt: o.alt || o.caption || name, date: o.date || ""
   };
 }));
