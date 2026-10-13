@@ -163,6 +163,7 @@ footer{background:#08080a;border-top:1px solid var(--line);padding:64px 0 28px}
 .tile{position:relative;display:block;width:100%;margin:0;padding:0;border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;cursor:pointer;background:var(--char2);color:inherit;text-align:left;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:transform .35s,border-color .35s,box-shadow .35s}
 .tile:hover{transform:translateY(-5px);border-color:var(--line);box-shadow:0 22px 46px rgba(0,0,0,.55)}
 .tile img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;transition:transform .6s}
+.tile video{width:100%;aspect-ratio:16/10;object-fit:cover;display:block;pointer-events:none;background:#000}
 .tile:hover img{transform:scale(1.05)}
 .ph{display:grid;place-items:center;width:100%;aspect-ratio:16/10;background:linear-gradient(145deg,hsl(var(--h,40) 25% 18%),#0f0f12);color:var(--gold)}
 .ph svg{width:44px;height:44px;opacity:.7}
@@ -441,7 +442,7 @@ footer{background:#08080a;border-top:1px solid var(--line);padding:64px 0 28px}
 const GOOGLE_FORM_URL = "https://forms.gle/v4eypWJtK44T1V5r7";
 // 2) Image files. Keep these files in the same folder as index.html, or replace with full URLs.
 const LOGO_URL = "aizenbuilders.jpg";
-const PORTRAIT_URL = "ludyjyay.jpg"; // Replace this one value to change your portrait photo.
+const PORTRAIT_URL = "ludyjay.jpg"; // Must match the file name in your repository exactly.
 /* =================================== */
 
 document.documentElement.classList.add("js");
@@ -504,12 +505,13 @@ const io = new IntersectionObserver((entries, o) => {
 $$(".reveal").forEach((el, i) => { el.style.transitionDelay = (i % 4) * 70 + "ms"; io.observe(el); });
 
 /* ============ COMMUNITY LIBRARY: EDIT HERE ============
-   Your folders sit next to index.html:
-     Aizen Photo/Events, Aizen Photo/Gathering Meetings, Aizen Photo/Awards, Aizen Video/Fun Community
-   Type each file name exactly as it appears (capitals and extension included) inside the files [ ] of its folder.
+   Type each file name exactly as it appears in your repository (capitals and extension included)
+   inside the files [ ] of its folder, in quotes, with a comma between names.
      Plain name:      "team-photo.jpg"
      With a caption:  { file: "trophy.jpg", caption: "Annual awards night", date: "May 2026" }
      YouTube video:   use a full link instead of a file name: "https://youtu.be/XXXXXXXXXXX"
+   folder: "" means the file sits next to index.html (no folder).
+   Video tiles show a real frame from the video itself. Change #t=0.5 in the tile() function to pick another second.
    Note: this only lists files hosted with the site or elsewhere. It is not an upload system.
    Uploads by an admin would need a backend or cloud storage (for example Firebase, Cloudinary, or a CMS). */
 const LIBRARY_PAGE_SIZE = 6;
@@ -517,10 +519,11 @@ const LIBRARY_CATEGORIES = ["Community Fun", "Events & Gatherings", "Growth & Ac
 const FEATURED_MEDIA = { type: "photo", src: "", caption: "Featured memory (sample placeholder, replace with a real photo or video)", alt: "", date: "" };
 const MEDIA_FOLDERS = [
   { type: "photo", folder: "Aizen Photos/Events",             category: "Events & Gatherings",   files: [] },
-  { type: "photo", folder: "Aizen Photos/Gathering and Meetings", category: "Events & Gatherings",   files: ["meeting1", "meeting2"] },
+  { type: "photo", folder: "Aizen Photos/Gathering Meetings", category: "Events & Gatherings",   files: ["meeting1.jpg", "meeting2.jpg"] },
   { type: "photo", folder: "Aizen Photos/Awards",             category: "Growth & Achievements", files: [] },
   { type: "video", folder: "",                                category: "Community Fun",         files: ["fem.mp4", "cyrus.mp4"] }
 ];
+
 /* ---- Builds the gallery from the folders above. You do not need to edit below this line. ---- */
 const niceName = f => f.replace(/\.[^.]+$/, "").replace(/[-_]+/g, " ").trim();
 const communityMedia = MEDIA_FOLDERS.flatMap(g => g.files.map(f => {
@@ -529,8 +532,9 @@ const communityMedia = MEDIA_FOLDERS.flatMap(g => g.files.map(f => {
   const name = niceName(decodeURIComponent(o.file.split("/").pop()));
   return {
     type: g.type, category: g.category,
-   src: isLink ? o.file : encodeURI((g.folder ? g.folder + "/" : "") + o.file),
-    caption: o.caption || (isLink ? "" : name), alt: o.alt || o.caption || name, date: o.date || ""
+    src: isLink ? o.file : encodeURI((g.folder ? g.folder + "/" : "") + o.file),
+    caption: o.caption || (isLink ? "" : name), alt: o.alt || o.caption || name, date: o.date || "",
+    thumbnail: o.thumbnail ? encodeURI(o.thumbnail) : ""
   };
 }));
 /* Until you add file names, show sample placeholders so the section is not empty. */
@@ -561,7 +565,9 @@ if (!communityMedia.length) {
   function tile(m, hue, li) {
     const t = thumb(m), vid = m.type === "video";
     const label = (vid ? "Play video: " : "View photo: ") + (m.caption || m.alt || "community moment");
+    const isFile = vid && !t && m.src && platform(m) === "file";
     const media = t ? `<img src="${esc(t)}" alt="${esc(m.alt || m.caption)}" loading="lazy" decoding="async">`
+      : isFile ? `<video src="${esc(m.src)}#t=0.5" preload="metadata" muted playsinline tabindex="-1" aria-hidden="true"></video>`
       : `<div class="ph" style="--h:${(hue * 47 + 30) % 360}">${IMG}</div>`;
     return `<button class="tile" type="button" data-i="${li}" aria-label="${esc(label)}">${media}`
       + (vid ? `<span class="play">${PLAY}</span><span class="badge">Video</span>` : "")
