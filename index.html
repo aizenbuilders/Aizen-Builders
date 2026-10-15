@@ -521,7 +521,7 @@ const LIBRARY_CATEGORIES = ["Community", "Events & Gatherings", "Growth & Achiev
 const FEATURED_MEDIA = { type: "photo", src: "", caption: "Featured memory (sample placeholder, replace with a real photo or video)", alt: "", date: "" };
 const MEDIA_FOLDERS = [
   { type: "photo", folder: "Aizen Photos/Events",             category: "Events & Gatherings",   files: [] },
-  { type: "photo", folder: "Aizen Photos/Gathering and Meetings", category: "Events & Gatherings",   files: ["meeting1.jpg", "meeting2.jpg"] },
+  { type: "photo", folder: "Aizen Photos/Gathering and Meetings", category: "Events & Gatherings",   files: ["meeting1.jpg", "meeting2.jpg", "meeting3.jpg"] },
   { type: "photo", folder: "Aizen Photos/Awards",             category: "Growth & Achievements", files: [] },
   { type: "video", folder: "",                                category: "Community",         files: ["fem.mp4", "cyrus.mp4", "jimuel.mp4", "leonard.mp4", "ryan.mp4", "clevent.mp4", "charles.mp4"] }
 ];
@@ -573,8 +573,8 @@ if (!communityMedia.length) {
       : `<div class="ph" style="--h:${(hue * 47 + 30) % 360}">${IMG}</div>`;
     return `<button class="tile" type="button" data-i="${li}" aria-label="${esc(label)}">${media}`
       + (vid ? `<span class="play">${PLAY}</span><span class="badge">Video</span>` : "")
-      + (m.src ? "" : '<span class="badge s">Sample</span>')
-      + `<span class="cap"><b>${esc(m.caption)}</b>${m.date ? `<small>${esc(m.date)}</small>` : ""}</span></button>`;
+           + (m.src ? "" : '<span class="badge s">Sample</span>')
+      + `</button>`;
   }
   function render() {
     list = communityMedia.filter(m => active === ALL || m.category === active);
