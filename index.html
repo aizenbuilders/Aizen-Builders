@@ -198,28 +198,25 @@ footer{background:#08080a;border-top:1px solid var(--line);padding:64px 0 28px}
 .contact-list a{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border:1px solid var(--line);border-radius:99px;background:rgba(255,255,255,.03);color:#dcdad4;font-size:.92rem;transition:border-color .25s,color .25s,transform .25s}
 .contact-list a:hover{border-color:var(--gold);color:var(--gold2);transform:translateY(-3px)}
 .contact-list svg{width:20px;height:20px;color:var(--gold);flex:none}
-  /* Team pop-up */
-.team-btn{margin-top:28px}
-.tm{position:fixed;inset:0;z-index:450;background:rgba(6,6,8,.96);display:none;overflow-y:auto;padding:80px 16px 40px}
+ /* Team pop-up */
+.tm{position:fixed;inset:0;z-index:450;background:rgba(6,6,8,.96);display:none;overflow-y:auto;padding:76px 16px 48px}
 .tm.open{display:block}
+.tm .lb-btn{position:fixed;top:14px;right:14px;z-index:2}
 .tm-in{width:min(1000px,100%);margin:0 auto}
-.tm-close{position:fixed;top:14px;right:14px;width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:rgba(23,23,27,.95);color:var(--gold2);font-size:1.6rem;line-height:1;cursor:pointer}
-.tm-close:hover{background:var(--gold);color:#111}
-.tm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px;margin-top:34px}
-.mem{display:block;width:100%;text-align:center;padding:26px 18px;border:1px solid rgba(255,255,255,.08);border-radius:14px;background:linear-gradient(180deg,var(--char2),var(--char));color:inherit;cursor:pointer;transition:transform .3s,border-color .3s}
-.mem:hover{transform:translateY(-6px);border-color:var(--line)}
-.av{position:relative;width:110px;height:110px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;overflow:hidden;background:linear-gradient(145deg,var(--char2),#0f0f12);border:1px solid var(--gold);color:var(--gold);font-family:var(--head);font-weight:800;font-size:1.8rem}
-.av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.mem b{display:block;font-family:var(--head);font-size:1rem}
-.mem small{color:var(--gold);font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
-.det{display:grid;grid-template-columns:240px 1fr;gap:34px;margin-top:30px;align-items:start}
-.det .av{width:240px;height:240px;border-radius:14px;font-size:3rem;margin:0}
-.det h3{font-size:clamp(1.6rem,3vw,2.3rem);font-weight:800}
-.det .role{margin:12px 0 0}
-.det h4{font-family:var(--head);color:var(--gold);font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;margin:24px 0 8px}
-.det p{color:#cfcdc7}
-.det blockquote{margin:0;font-size:clamp(1rem,1.8vw,1.25rem);text-transform:none}
-@media(max-width:700px){.det{grid-template-columns:1fr}.det .av{width:min(100%,260px);height:auto;aspect-ratio:1}}
+.tm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:18px;margin-top:30px}
+.mem{position:relative;text-align:left;padding:0;border:1px solid rgba(255,255,255,.08);border-radius:14px;overflow:hidden;background:linear-gradient(180deg,var(--char2),var(--char));color:inherit;cursor:pointer;transition:transform .35s,border-color .35s}
+.mem:hover{transform:translateY(-5px);border-color:var(--line)}
+.mem .info{padding:14px 16px 16px}
+.mem b{display:block;font-family:var(--head);font-size:1rem;line-height:1.3}
+.mem small{color:var(--gold)}
+.av{position:relative;overflow:hidden;width:100%;aspect-ratio:1/1;display:grid;place-items:center;font-family:var(--head);font-size:3rem;color:var(--gold);background:linear-gradient(145deg,var(--char2),#0f0f12)}
+.av img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 32%}
+.tm-det{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,56px);margin-top:30px;align-items:start}
+.tm-det .av{aspect-ratio:4/5;border-radius:10px}
+.tm-det h4{color:var(--gold);font-family:var(--head);letter-spacing:.18em;text-transform:uppercase;font-size:.78rem;margin:24px 0 8px}
+.tm-det p{color:#cfcdc7}
+@media(max-width:700px){.tm-det{grid-template-columns:1fr}}
+@media(min-width:981px){.menu{gap:16px}.menu a:not(.btn){font-size:.84rem}}
   
 /* Responsive */
 @media(max-width:980px){
@@ -271,6 +268,7 @@ footer{background:#08080a;border-top:1px solid var(--line);padding:64px 0 28px}
       <li><a href="#leadership">Leadership</a></li>
       <li><a href="#library">Community Library</a></li>
       <li><a href="#inquire">Contact</a></li>
+      <li><a href="#team" data-team>Team</a></li>
       <li><a href="#" class="btn btn-gold" data-inquire>Inquire Now</a></li>
     </ul>
   </div>
@@ -420,6 +418,7 @@ footer{background:#08080a;border-top:1px solid var(--line);padding:64px 0 28px}
     <a href="#" class="btn btn-gold reveal" data-inquire>Submit an Inquiry</a>
     <p class="small reveal">Have questions? Start by reaching out.</p>
     <ul class="contact-list reveal" id="contactList" aria-label="Contact details"></ul>
+    <p class="reveal" style="margin-top:26px"><button class="btn btn-ghost" type="button" data-team>Meet the Team</button></p>
   </div>
 </section>
 </main>
@@ -457,11 +456,11 @@ footer{background:#08080a;border-top:1px solid var(--line);padding:64px 0 28px}
   </div>
 </footer>
 
-<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Media viewer">
-<div class="tm" id="tm" role="dialog" aria-modal="true" aria-labelledby="tmTitle">
-  <button class="tm-close" id="tmClose" type="button" aria-label="Close team">&times;</button>
+<div class="tm" id="teamModal" role="dialog" aria-modal="true" aria-label="Meet the team">
+  <button class="lb-btn" id="tmClose" type="button" aria-label="Close team">&times;</button>
   <div class="tm-in" id="tmBody"></div>
 </div>
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Media viewer">
   <button class="lb-btn lb-close" id="lbClose" type="button" aria-label="Close viewer">&times;</button>
   <button class="lb-btn lb-prev" id="lbPrev" type="button" aria-label="Previous">&#8249;</button>
   <div class="lb-stage" id="lbStage"></div>
@@ -722,46 +721,44 @@ const CONTACTS = {
   });
 })();
 /* ============ TEAM: EDIT HERE ============
-   Add one { } block per member, with a comma after each block except the last.
-   photo is optional (a file path such as "Aizen Team/ana.jpg"). Without it, the person's initials show.
-   The three entries below are SAMPLES. Replace them with your real members. */
-const TEAM_TITLE = "Meet the Team";
-const TEAM_INTRO = "The people behind Aizen Builders.";
+   To add a member, copy one { ... } block and change the words. Put the photo file in your repository
+   and type its exact name in photo (or leave photo as ""). Delete sample:true once a block has real details. */
 const TEAM = [
-  { name: "Sample Member One",   status: "Position or status here", belief: "Their belief or personal motto goes here.", about: "A short description of who this person is.", photo: "" },
-  { name: "Sample Member Two",   status: "Position or status here", belief: "Their belief or personal motto goes here.", about: "A short description of who this person is.", photo: "" },
-  { name: "Sample Member Three", status: "Position or status here", belief: "Their belief or personal motto goes here.", about: "A short description of who this person is.", photo: "" }
+  { name: "Ludy Jay B. Mendoza Jr.", status: "Top Associate", photo: "ludyjay.jpg",
+    about: "A driven young leader devoted to helping others grow, pursue their goals, and discover what they are capable of achieving.",
+    belief: "I believe that limitations should never define a person's future. Through determination, continuous growth, and a commitment to serving others, I strive to prove that we can accomplish what others may believe is impossible." },
+  { name: "Team member name", status: "Status or position", photo: "",
+    about: "Write who this person is here.", belief: "Write what this person believes here.", sample: true },
+  { name: "Team member name", status: "Status or position", photo: "",
+    about: "Write who this person is here.", belief: "Write what this person believes here.", sample: true }
 ];
 
 (function () {
-  const tm = $("#tm"), body = $("#tmBody"), btn = $("#teamBtn"), closeB = $("#tmClose");
-  if (!tm || !btn) return;
+  const modal = $("#teamModal"), body = $("#tmBody"), closeB = $("#tmClose");
+  let last = null;
   const esc = s => String(s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  const ini = n => String(n).split(/\s+/).map(w => w[0]).slice(0, 2).join("").toUpperCase();
-  const av = m => `<div class="av"><span>${esc(ini(m.name))}</span>${m.photo ? `<img src="${esc(encodeURI(m.photo))}" alt="${esc(m.name)}" loading="lazy" onerror="this.remove()">` : ""}</div>`;
+  const av = m => `<div class="av"><span>${esc((m.name || "?").trim().charAt(0))}</span>${m.photo ? `<img src="${esc(encodeURI(m.photo))}" alt="${esc(m.name)}" loading="lazy" onerror="this.remove()">` : ""}</div>`;
   function list() {
-    body.innerHTML = `<p class="kicker">Our Team</p><h2 class="h2" id="tmTitle">${esc(TEAM_TITLE)}</h2><p class="lead">${esc(TEAM_INTRO)}</p>`
-      + `<div class="tm-grid">${TEAM.map((m, i) => `<button class="mem" type="button" data-i="${i}" aria-label="View ${esc(m.name)}">${av(m)}<b>${esc(m.name)}</b><small>${esc(m.status)}</small></button>`).join("")}</div>`;
-    tm.scrollTop = 0;
+    body.innerHTML = '<p class="kicker">Our Team</p><h2 class="h2">Meet the team</h2><p class="lead">Select a member to see who they are and what they believe.</p><div class="tm-grid">'
+      + TEAM.map((m, i) => `<button class="mem" type="button" data-i="${i}" aria-label="View ${esc(m.name)}">${av(m)}<div class="info"><b>${esc(m.name)}</b><small>${esc(m.status)}</small></div>${m.sample ? '<span class="badge s">Sample</span>' : ""}</button>`).join("")
+      + "</div>";
   }
   function detail(i) {
     const m = TEAM[i];
-    body.innerHTML = `<button class="btn btn-ghost" type="button" id="tmBack">&larr; All members</button>`
-      + `<div class="det">${av(m)}<div><h3 id="tmTitle">${esc(m.name)}</h3><span class="role">${esc(m.status)}</span>`
-      + `<h4>Who they are</h4><p>${esc(m.about)}</p><h4>Their belief</h4><blockquote>${esc(m.belief)}</blockquote></div></div>`;
-    tm.scrollTop = 0; $("#tmBack").focus();
+    body.innerHTML = `<button class="btn btn-ghost" type="button" id="tmBack">&larr; All members</button><div class="tm-det"><div>${av(m)}</div><div><h3 class="name">${esc(m.name)}</h3><span class="role">${esc(m.status)}</span><h4>Who I am</h4><p>${esc(m.about)}</p><h4>What I believe</h4><p>${esc(m.belief)}</p></div></div>`;
+    $("#tmBack").focus();
   }
-  let last = null;
-  function open() { last = document.activeElement; list(); tm.classList.add("open"); document.body.style.overflow = "hidden"; closeB.focus(); }
-  function close() { tm.classList.remove("open"); document.body.style.overflow = ""; if (last) last.focus(); }
-  btn.addEventListener("click", open);
-  closeB.addEventListener("click", close);
+  function open() { last = document.activeElement; list(); modal.classList.add("open"); document.body.style.overflow = "hidden"; closeB.focus(); }
+  function close() { modal.classList.remove("open"); document.body.style.overflow = ""; if (last) last.focus(); }
   body.addEventListener("click", e => {
-    const c = e.target.closest(".mem");
-    if (c) detail(+c.dataset.i);
+    const b = e.target.closest(".mem");
+    if (b) detail(+b.dataset.i);
     else if (e.target.closest("#tmBack")) list();
   });
-  document.addEventListener("keydown", e => { if (tm.classList.contains("open") && e.key === "Escape") close(); });
+  closeB.addEventListener("click", close);
+  modal.addEventListener("click", e => { if (e.target === modal) close(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && modal.classList.contains("open")) close(); });
+  $$("[data-team]").forEach(a => a.addEventListener("click", e => { e.preventDefault(); closeMenu(); open(); }));
 })();
   
 /* Footer year */
