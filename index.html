@@ -768,7 +768,7 @@ const TEAM = [
   const esc = s => String(s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const av = m => `<div class="av"><span>${esc((m.name || "?").trim().charAt(0))}</span>${m.photo ? `<img src="${esc(encodeURI(m.photo))}" alt="${esc(m.name)}" loading="lazy" onerror="this.remove()">` : ""}</div>`;
   function list() {
-    body.innerHTML = '<p class="kicker">Our Team</p><h2 class="h2">Meet the team</h2><p class="lead">Select a member to see who they are and what they believe.</p><div class="tm-grid">'
+    body.innerHTML = '<p class="kicker">Our Team</p><h2 class="h2">Meet the team</h2><p class="lead">This will be updated everyday.</p><div class="tm-grid">'
       + TEAM.map((m, i) => `<button class="mem" type="button" data-i="${i}" aria-label="View ${esc(m.name)}">${av(m)}<div class="info"><b>${esc(m.name)}</b><small>${esc(m.status)}</small></div>${m.sample ? '<span class="badge s">Sample</span>' : ""}</button>`).join("")
       + "</div>";
   }
